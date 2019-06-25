@@ -46,7 +46,13 @@ edged:
     docker-address: unix:///var/run/docker.sock
     version: 2.0.0
     runtime-type: docker
-    remote-runtime-endpoint: /var/run/containerd/containerd.sock
-    remote-image-endpoint: /var/run/containerd/containerd.sock
+    remote-runtime-endpoint: unix://var/run/dockershim.sock
+    remote-image-endpoint: unix://var/run/dockershim.sock
     runtime-request-timeout: 2
     podsandbox-image: k8s.gcr.io/pause
+    dockershim-root-diretcory: /var/lib/dockershim
+    docker-disable-shared-PID: false
+    cni-name: cni
+    cni-bin-dir: /opt/cni/bin
+    cni-conf-dir: /etc/cni/net.d
+    cgroup-driver: cgroupfs
