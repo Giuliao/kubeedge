@@ -510,7 +510,7 @@ func newEdged() (*edged, error) {
 		nil,
 	)
 	if err != nil {
-		return nil, fmt.Errorf("New generic runtime manager failed, err: %s", err.Error())
+		return nil, fmt.Errorf("new generic runtime manager failed, err: %s", err.Error())
 	}
 
 	ed.containerRuntime = containerRuntime
@@ -554,7 +554,7 @@ func (e *edged) StartGarbageCollection() {
 	go utilwait.Until(func() {
 		err := e.imageGCManager.GarbageCollect()
 		if err != nil {
-			log.LOGGER.Errorf("Image garbage collection failed")
+			log.LOGGER.Errorf("Image garbage collection failed, %v", err)
 		}
 	}, ImageGCPeriod, utilwait.NeverStop)
 
